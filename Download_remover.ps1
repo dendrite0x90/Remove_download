@@ -3,9 +3,9 @@
 # Written by Dendrite
 
 # Setting task action
-New-SceduledTaskAction -Execute 'Download_remover.ps1'
+New-ScheduledTaskAction -Execute 'Download_remover.ps1'
 # Setting task trigger
-New-ScheduledTaskTrigger -DaysOfWeek Saturday -At 12pm
+New-ScheduledTaskTrigger -DaysOfWeek Saturday -At 12pm -weekly
 
     
 # Declaring main
@@ -19,7 +19,7 @@ function main
     remove-item $DownloadFolder
     
     # Clears the recyclebin
-    Clear-RecycleBin
+    Clear-RecycleBin -Confirm -Force -
 }
 
 
